@@ -14,25 +14,22 @@ gulp.task('bower', function () {
 });
 
 gulp.task('sass', function () {
-  gulp.src('app/**/*.scss')
+  gulp.src(['app/**/*.scss', 'bower_components/demo-components/app/**/*.scss'])
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./build/app'))
-    .pipe(connect.reload());
+    .pipe(gulp.dest('./build/app'));
 });
 
 gulp.task('coffee', function () {
-  gulp.src('app/**/*.coffee')
+  gulp.src(['app/**/*.coffee', 'bower_components/demo-components/app/**/*.coffee'])
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('./build/app/'))
-    .pipe(connect.reload());
+    .pipe(gulp.dest('./build/app'));
 });
 
 gulp.task('haml', function () {
   gulp.src('index.haml')
     .pipe(haml())
     .pipe(gulp.dest('./build'));
-    // .pipe(connect.reload());
 });
 
 gulp.task('clean', function () {
@@ -52,7 +49,6 @@ gulp.task('serve', ['watch', 'build'], function () {
   connect.server({
   	// default port is 8080
     root: 'build',
-    // livereload: true,
     middleware: function (connect, o) {
       return [
         // Requests to /api will be processed by the Rails app
