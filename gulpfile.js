@@ -43,6 +43,7 @@ gulp.task('watch', function () {
   gulp.watch('index.haml', ['haml']);
   gulp.watch('app/**/*.coffee', ['coffee']);
   gulp.watch('app/**/*.scss', ['sass']);
+  gulp.watch('bower_components/demo-components/**/*', ['haml', 'coffee', 'sass']); // this is a little coarse
 });
 
 gulp.task('serve', ['watch', 'build'], function () {
