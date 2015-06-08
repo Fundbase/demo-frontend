@@ -11,5 +11,9 @@ A simple project which includes:
 ### Dependencies
 
 * `demo-components` repository
- * can be pointed to a local repository, e.g. `"file:///Users/stanley/workspace/demo-components/.git/"` (bower.json)
- * TODO need to solve updating of the depedency; even better would be if the changes in components didn't have to be committed everytime
+ * for local development (until bower supports using a local-directory dependency from a git directory), we can use `bower link` (`bower link` in the `demo-components` and then `bower link demo-components` in `demo-frontend`; this creates a symlink in `bower_components`)
+
+### How to run
+
+* `$ gulp`
+ * sometimes it fails to start, so try again (needs to be fixed)
